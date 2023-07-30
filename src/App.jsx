@@ -3,12 +3,23 @@ import AppRoutes from "./AppRoutes";
 import { getTodos } from "./api";
 import { Link } from "react-router-dom";
 
-function App() {
+function App(todo) {
   const [todos, setTodos] = useState([
     { id: 1, text: "Хлеб" },
     { id: 2, text: "Молоко" },
     { id: 3, text: "Сок" },
   ]);
+
+
+  const deleteTodo = async (id) => {
+    setTodos([...todos.filter((todo) => todo.id !== id)]);
+  
+    const newTodos = await deleteTodo(id);
+  
+    setTodos(newTodos.todos)
+  };
+  
+
 
   useEffect(() => {
     getTodos().then((todos) => {
@@ -36,6 +47,9 @@ function App() {
         todos={todos}
         setTodos={setTodos}
       ></AppRoutes>
+         <button onClick={() => deleteTodo(todo.id)}>
+                Удалить задачу
+              </button>
     </>
   );
 }
