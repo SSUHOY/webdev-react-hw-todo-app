@@ -1,4 +1,4 @@
-export default function TodosPage({ todos, setCurrentTodo,todo }) {
+export default function TodosPage({ todos, setCurrentTodo }) {
 
   return (
     <div className="page">
@@ -16,6 +16,7 @@ export default function TodosPage({ todos, setCurrentTodo,todo }) {
           );
         })}
       </ul>
+      
     </div>
   );
 }

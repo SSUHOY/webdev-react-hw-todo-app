@@ -21,12 +21,11 @@ export function AddTodoForm({ setTodos }) {
     } catch (error) {
       setAddTodoError(error.message)
       setIsNewTodoLoading(false)
+    } finally {
+      setIsNewTodoLoading(false);
     }
     }
  
-  
-
-
   return (
     <div>
       <h3>Добавить задачу</h3>

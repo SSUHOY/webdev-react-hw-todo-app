@@ -3,14 +3,12 @@ import AppRoutes from "./AppRoutes";
 import { getTodos } from "./api";
 import { Link } from "react-router-dom";
 
-function App(todo) {
+function App() {
   const [todos, setTodos] = useState([
     { id: 1, text: "Хлеб" },
     { id: 2, text: "Молоко" },
     { id: 3, text: "Сок" },
   ]);
-
-
   const deleteTodo = async (id) => {
     setTodos([...todos.filter((todo) => todo.id !== id)]);
   
@@ -18,9 +16,6 @@ function App(todo) {
   
     setTodos(newTodos.todos)
   };
-  
-
-
   useEffect(() => {
     getTodos().then((todos) => {
       setTodos(todos.todos);
@@ -47,7 +42,7 @@ function App(todo) {
         todos={todos}
         setTodos={setTodos}
       ></AppRoutes>
-         <button onClick={() => deleteTodo(todo.id)}>
+         <button onClick={() => deleteTodo(todos.id)}>
                 Удалить последнюю задачу
               </button>
     </>
