@@ -34,8 +34,8 @@ export async function postTodo(text) {
   return data;
 }
 
-export async function deleteTodo(id) {
-  const response = await fetch(`https://wedev-api.sky.pro/api/v2/todos/id`, {
+export async function deleteTodo({id}) {
+  const response = await fetch(`https://wedev-api.sky.pro/api/v2/todos/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

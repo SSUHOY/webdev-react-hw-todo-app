@@ -1,38 +1,30 @@
 import { useState } from "react";
 import { postTodo } from "../api";
 
-export function AddTodoForm({ setTodos,todos }) {
-  const [newTodoText, setNewTodoText] = useState("");
+export function AddTodoForm({ setTodos }) {
 
+  const [newTodoText, setNewTodoText] = useState("");
   const [isNewTodoLoading, setIsNewTodoLoading] = useState(false);
   const [addTodoError, setAddTodoError] = useState(null);
 
-  // const handleAddTodoClick = async () => {
-  //   try {
-  //     if (!newTodoText) {
-  //       return;
-  //     }
-  //     setIsNewTodoLoading(true);
-  //     const newTodos = await postTodo(newTodoText);
-
-  //     setTodos(newTodos.todos);
-  //     setNewTodoText("");
-  //   } catch (error) {
-  //     setAddTodoError(error.message);
-  //   } finally {
-  //     setIsNewTodoLoading(false);
-  //   }
-  // };
-
   const handleAddTodoClick = async () => {
-    if (!newTodoText) {
-      return;
+    try {
+      if (!newTodoText) {
+        return;
+      }
+      setIsNewTodoLoading(true);
+      const newTodos = await postTodo(newTodoText);
+      setIsNewTodoLoading(false);
+  
+      setTodos(newTodos.todos);
+      setNewTodoText("");
+    } catch (error) {
+      setAddTodoError(error.message)
+      setIsNewTodoLoading(false)
     }
-    const newTodos = await postTodo(newTodoText);
-
-    setTodos(newTodos.todos);
-    setNewTodoText("");
-  };
+    }
+ 
+  
 
 
   return (

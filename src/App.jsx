@@ -48,7 +48,7 @@ function App(todo) {
         setTodos={setTodos}
       ></AppRoutes>
          <button onClick={() => deleteTodo(todo.id)}>
-                Удалить задачу
+                Удалить последнюю задачу
               </button>
     </>
   );

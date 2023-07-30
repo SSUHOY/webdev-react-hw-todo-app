@@ -1,6 +1,4 @@
-import { deleteTodo } from "../api";
-
-export default function TodosPage({ todos, setCurrentTodo }) {
+export default function TodosPage({ todos, setCurrentTodo,todo }) {
 
   return (
     <div className="page">
