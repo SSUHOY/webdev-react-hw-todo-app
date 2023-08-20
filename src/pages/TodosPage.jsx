@@ -1,4 +1,5 @@
 export default function TodosPage({ todos, setCurrentTodo }) {
+
   return (
     <div className="page">
       <h1>Список задач</h1>
@@ -15,6 +16,7 @@ export default function TodosPage({ todos, setCurrentTodo }) {
           );
         })}
       </ul>
+      
     </div>
   );
 }

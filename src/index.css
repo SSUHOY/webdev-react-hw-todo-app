@@ -29,3 +29,7 @@ code {
 .todo-item:hover {
   background-color: coral;
 }
+
+.delete-btn{
+  margin-left: 15px;
+}

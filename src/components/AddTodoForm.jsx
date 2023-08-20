@@ -2,8 +2,8 @@ import { useState } from "react";
 import { postTodo } from "../api";
 
 export function AddTodoForm({ setTodos }) {
-  const [newTodoText, setNewTodoText] = useState("");
 
+  const [newTodoText, setNewTodoText] = useState("");
   const [isNewTodoLoading, setIsNewTodoLoading] = useState(false);
   const [addTodoError, setAddTodoError] = useState(null);
 
@@ -14,16 +14,18 @@ export function AddTodoForm({ setTodos }) {
       }
       setIsNewTodoLoading(true);
       const newTodos = await postTodo(newTodoText);
-
+      setIsNewTodoLoading(false);
+  
       setTodos(newTodos.todos);
       setNewTodoText("");
     } catch (error) {
-      setAddTodoError(error.message);
+      setAddTodoError(error.message)
+      setIsNewTodoLoading(false)
     } finally {
       setIsNewTodoLoading(false);
     }
-  };
-
+    }
+ 
   return (
     <div>
       <h3>Добавить задачу</h3>

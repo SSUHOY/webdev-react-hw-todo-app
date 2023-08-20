@@ -9,7 +9,13 @@ function App() {
     { id: 2, text: "Молоко" },
     { id: 3, text: "Сок" },
   ]);
-
+  const deleteTodo = async (id) => {
+    setTodos([...todos.filter((todo) => todo.id !== id)]);
+  
+    const newTodos = await deleteTodo(id);
+  
+    setTodos(newTodos.todos)
+  };
   useEffect(() => {
     getTodos().then((todos) => {
       setTodos(todos.todos);
@@ -36,6 +42,9 @@ function App() {
         todos={todos}
         setTodos={setTodos}
       ></AppRoutes>
+         <button onClick={() => deleteTodo(todos.id)}>
+                Удалить последнюю задачу
+              </button>
     </>
   );
 }

@@ -33,3 +33,14 @@ export async function postTodo(text) {
   const data = await response.json();
   return data;
 }
+
+export async function deleteTodo({id}) {
+  const response = await fetch(`https://wedev-api.sky.pro/api/v2/todos/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: "DELETE",
+  });
+  const data = await response.json();
+  return data;
+}
